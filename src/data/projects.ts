@@ -1,481 +1,643 @@
 
-export interface Project {
-  id: number;
-  slug: string;
-  title: string;
-  category: string;
-  client: string;
-  year: string;
-  role: string;
-  description: string[];
-  challenge: string;
-  solution: string;
-  results: string[];
-  technologies: string[];
-  mainImage: string;
-  images: {
-    url: string;
-    caption?: string;
-  }[];
-  testimonial?: {
-    quote: string;
-    author: string;
-    position: string;
-    avatar?: string;
-  };
-  nextProject?: string;
-  prevProject?: string;
-}
-
-export const projects: Project[] = [
+export const projects = [
   {
-    id: 1,
-    slug: "financial-app-redesign",
-    title: "Financial App Redesign",
-    category: "Mobile App",
-    client: "GlobalBank Inc.",
-    year: "2023",
-    role: "UX/UI Design, Mobile Development",
-    description: [
-      "GlobalBank approached us to completely redesign their aging mobile banking application, which was suffering from poor user experience, outdated design, and limited functionality.",
-      "We conducted extensive user research, competitive analysis, and stakeholder interviews to understand pain points and opportunities for improvement. Based on our findings, we created a comprehensive redesign strategy focusing on intuitive navigation, modern aesthetics, and enhanced security features.",
-      "The result was a complete transformation of their mobile banking experience, with a clean, modern interface that significantly improved user satisfaction and engagement. The new app featured biometric authentication, personalized financial insights, and streamlined transaction flows."
-    ],
-    challenge: "The existing banking app had poor user ratings (2.1/5) and high abandonment rates. Users complained about complicated workflows, slow performance, and missing features compared to competitors. The bank was losing customers to more tech-savvy competitors.",
-    solution: "We implemented a complete UX overhaul using a user-centered design approach. The new interface used intuitive gestures, personalized dashboards, and progressive disclosure of information. We rebuilt the app using React Native for cross-platform consistency and improved performance.",
-    results: [
-      "User satisfaction ratings increased from 2.1/5 to 4.7/5 within three months of launch",
-      "Mobile banking adoption increased by 34% among existing customers",
-      "Transaction volume through the app increased by 47%",
-      "Customer support calls related to app usage decreased by 62%"
-    ],
-    technologies: ["React Native", "TypeScript", "Redux", "Node.js", "Firebase", "Figma"],
-    mainImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1200&auto=format",
+    id: '1',
+    slug: 'e-commerce-platform',
+    title: 'Modern E-commerce Platform',
+    subtitle: 'Full-stack online shopping experience',
+    category: 'Web Development',
+    client: 'FashionRetail Inc.',
+    completionDate: '2023-05-15',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1661956602868-6ae368943878?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
     images: [
-      { 
-        url: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&auto=format", 
-        caption: "Dashboard and account overview screens" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1551033406-611cf9a28f67?w=800&auto=format", 
-        caption: "Transaction history and details interface" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1589666564459-93cdd3ab856a?w=800&auto=format", 
-        caption: "Payment and transfer workflows" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1605602562881-468f097040c3?w=800&auto=format", 
-        caption: "Financial insights and budgeting features" 
-      }
+      'https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1631282783545-c8f568585754?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Creating a scalable e-commerce platform with real-time inventory management and secure payment processing.',
+    solution: 'We designed a modern, responsive e-commerce platform with advanced search, personalized recommendations, and seamless checkout.',
+    results: '40% increase in conversion rate, 25% increase in average order value, and 60% reduction in cart abandonment.',
+    description: [
+      'Responsive design optimized for all devices',
+      'Advanced search with filters and sorting',
+      'Real-time inventory management',
+      'Secure payment processing with Stripe',
+      'Customer account management',
+      'Order tracking and history',
     ],
     testimonial: {
-      quote: "TechBros completely transformed our digital banking experience. The redesigned app has not only delighted our existing customers but has become a significant competitive advantage in attracting new clients.",
+      content: "The e-commerce platform exceeded our expectations. The intuitive interface and seamless checkout process have significantly improved our conversion rates.",
       author: "Sarah Johnson",
-      position: "Chief Digital Officer, GlobalBank Inc.",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&auto=format"
+      position: "CEO, FashionRetail Inc."
     },
-    nextProject: "e-commerce-platform",
-    prevProject: "digital-marketing-dashboard"
+    url: "https://fashionretail.example.com"
   },
   {
-    id: 2,
-    slug: "e-commerce-platform",
-    title: "E-commerce Platform",
-    category: "Web Development",
-    client: "Modern Furnishings Co.",
-    year: "2023",
-    role: "Full-stack Development, E-commerce Strategy",
-    description: [
-      "Modern Furnishings Co., a premium furniture retailer, needed to transition from their brick-and-mortar focus to an omnichannel approach with a sophisticated e-commerce platform that would showcase their high-end products and provide a seamless shopping experience.",
-      "We developed a custom e-commerce solution that emphasized beautiful product photography, intuitive navigation, and a frictionless checkout process. The platform included advanced features like augmented reality furniture placement, custom furniture configuration, and integrated delivery scheduling.",
-      "The platform successfully translated the premium in-store experience to digital, with immersive product presentations and personalized customer journeys that significantly increased online sales and expanded their market reach."
-    ],
-    challenge: "The client needed to digitize their premium furniture shopping experience without losing the high-touch, customized service their customers expected. Their existing website was brochure-ware with no e-commerce capabilities, and they were losing market share to online-first competitors.",
-    solution: "We developed a custom e-commerce platform built on Next.js with a headless CMS for content management. The solution included interactive 3D product models, AR room visualization, custom furniture configuration tools, and integrated white-glove delivery scheduling.",
-    results: [
-      "Online sales grew to represent 42% of total revenue within the first year",
-      "Average order value increased by 28% compared to in-store purchases",
-      "Customer acquisition cost decreased by 35% compared to traditional channels",
-      "Geographic market expanded from regional to national, with sales in 47 states"
-    ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity CMS", "Shopify API", "Three.js", "WebAR"],
-    mainImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=1200&auto=format",
+    id: '2',
+    slug: 'healthcare-management-system',
+    title: 'Healthcare Management System',
+    subtitle: 'Integrated patient care platform',
+    category: 'Enterprise Solution',
+    client: 'MediCare Health Network',
+    completionDate: '2023-07-22',
+    technologies: ['React', 'Python', 'Django', 'PostgreSQL', 'Docker', 'HIPAA Compliance'],
+    mainImage: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
     images: [
-      { 
-        url: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&auto=format", 
-        caption: "Homepage and featured collections" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&auto=format", 
-        caption: "Product detail pages with 3D visualization" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&auto=format", 
-        caption: "Furniture customization interface" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1561069934-eee225952461?w=800&auto=format", 
-        caption: "Checkout and delivery scheduling workflow" 
-      }
+      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=2806&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Developing a secure, HIPAA-compliant healthcare management system that integrates with existing hospital infrastructure.',
+    solution: 'We built a comprehensive platform with electronic health records, appointment scheduling, billing, and secure messaging between patients and providers.',
+    results: '30% reduction in administrative workload, 45% faster patient check-in, and improved patient satisfaction scores by 35%.',
+    description: [
+      'HIPAA-compliant patient data management',
+      'Electronic health records system',
+      'Appointment scheduling and reminders',
+      'Secure doctor-patient communication portal',
+      'Billing and insurance processing',
+      'Analytics dashboard for administrators',
     ],
     testimonial: {
-      quote: "TechBros didn't just build us an online store - they created a digital showroom that captures the essence of our brand and products. The AR features and custom configuration tools have been game-changers for our business.",
-      author: "Michael Chen",
-      position: "Founder & CEO, Modern Furnishings Co.",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format"
+      content: "This system has transformed our healthcare delivery. Our staff can now focus more on patient care and less on paperwork.",
+      author: "Dr. Michael Chen",
+      position: "Chief Medical Officer, MediCare Health Network"
     },
-    nextProject: "healthcare-management-system",
-    prevProject: "financial-app-redesign"
+    url: "https://medicare-health.example.com"
   },
   {
-    id: 3,
-    slug: "healthcare-management-system",
-    title: "Healthcare Management System",
-    category: "Software Development",
-    client: "Integrated Care Network",
-    year: "2022",
-    role: "Enterprise Software Development, Healthcare IT",
-    description: [
-      "Integrated Care Network, a growing healthcare provider with multiple facilities, was struggling with fragmented systems that created information silos, administrative inefficiencies, and challenges in providing coordinated patient care across locations.",
-      "We developed a comprehensive healthcare management system that integrated patient records, scheduling, billing, inventory management, and reporting into a unified platform. The system was designed with strict adherence to HIPAA regulations and included role-based access controls to ensure data security.",
-      "The implementation transformed their operations, creating a connected ecosystem that streamlined workflows, reduced administrative overhead, and improved the quality of patient care through better information access and coordination."
-    ],
-    challenge: "The client operated five facilities using different legacy systems that couldn't share information effectively. This led to duplicate data entry, billing errors, scheduling conflicts, and challenges in tracking patient care across facilities. Compliance reporting was manual and time-consuming.",
-    solution: "We developed a custom, HIPAA-compliant healthcare management system with centralized patient records, integrated scheduling and billing, inventory management, and comprehensive reporting. The system included secure patient portals, provider dashboards, and automated compliance reporting.",
-    results: [
-      "Administrative staff time spent on data entry reduced by 65%",
-      "Billing accuracy improved by 43%, resulting in faster reimbursements",
-      "Cross-facility referral processing time decreased from 3 days to same-day",
-      "Compliance reporting time reduced from 40 hours/month to 4 hours/month"
-    ],
-    technologies: ["Java", "Spring Boot", "Angular", "PostgreSQL", "FHIR/HL7", "Docker", "Kubernetes", "Azure Cloud"],
-    mainImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&auto=format",
+    id: '3',
+    slug: 'banking-mobile-app',
+    title: 'Modern Banking Mobile App',
+    subtitle: 'Secure financial management on the go',
+    category: 'Mobile App',
+    client: 'Global Financial Group',
+    completionDate: '2023-03-10',
+    technologies: ['React Native', 'Node.js', 'MongoDB', 'AWS', 'Biometric Authentication'],
+    mainImage: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
     images: [
-      { 
-        url: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&auto=format", 
-        caption: "Patient management dashboard" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&auto=format", 
-        caption: "Scheduling and resource allocation interface" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format", 
-        caption: "Clinical documentation system" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1537434096881-12ecd09b818e?w=800&auto=format", 
-        caption: "Analytics and reporting module" 
-      }
+      'https://images.unsplash.com/photo-1589758438368-0ad531db3366?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2415&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Developing a secure, user-friendly mobile banking application with advanced features while ensuring the highest security standards.',
+    solution: 'We created a robust mobile app with biometric authentication, real-time transaction tracking, budgeting tools, and investment management.',
+    results: '200,000+ downloads in the first month, 4.8-star average rating across app stores, and 60% increase in mobile banking adoption.',
+    description: [
+      'Biometric authentication (fingerprint and facial recognition)',
+      'Real-time transaction notifications',
+      'Bill payments and transfers',
+      'Expense tracking and categorization',
+      'Investment portfolio management',
+      'ATM/branch locator with augmented reality',
     ],
     testimonial: {
-      quote: "The integrated system developed by TechBros has fundamentally changed how we operate. Our staff can now focus on patient care instead of paperwork, and the improved coordination between our facilities has significantly enhanced the quality of care we provide.",
-      author: "Dr. Lisa Rivera",
-      position: "Medical Director, Integrated Care Network",
-      avatar: "https://images.unsplash.com/photo-1614289371518-722f2615943d?w=200&auto=format"
+      content: "Our customers love the new mobile banking experience. The security features and intuitive interface have received overwhelmingly positive feedback.",
+      author: "Jennifer Martinez",
+      position: "VP of Digital Banking, Global Financial Group"
     },
-    nextProject: "real-time-analytics-dashboard",
-    prevProject: "e-commerce-platform"
+    url: "https://global-banking.example.com"
   },
   {
-    id: 4,
-    slug: "real-time-analytics-dashboard",
-    title: "Real-time Analytics Dashboard",
-    category: "Data Visualization",
-    client: "AdMetrics",
-    year: "2022",
-    role: "Data Engineering, Frontend Development",
-    description: [
-      "AdMetrics, a digital advertising agency, needed a comprehensive solution to monitor campaign performance across multiple platforms in real-time and provide their clients with accessible, actionable insights from complex advertising data.",
-      "We developed a sophisticated analytics dashboard that aggregated data from multiple advertising platforms (Google Ads, Facebook, Instagram, LinkedIn, TikTok) and visualized key performance indicators in an intuitive interface. The system processed millions of data points hourly to provide real-time performance metrics.",
-      "The dashboard became a powerful client-facing tool that differentiated AdMetrics from competitors, with interactive visualizations, custom reporting, and automated alerts that improved campaign optimization and client satisfaction."
-    ],
-    challenge: "The client managed campaigns across multiple platforms, each with its own reporting interface. Analysts spent 15+ hours per week manually compiling data for client reports. Real-time performance monitoring was impossible, leading to delayed optimizations and missed opportunities.",
-    solution: "We built a real-time analytics platform using a modern data stack that integrated with advertising APIs, processed and normalized the data, and presented it through an interactive dashboard. The system included anomaly detection, trend analysis, and automated reporting features.",
-    results: [
-      "Reduced reporting preparation time by 93% (from 15 hours to 1 hour per week)",
-      "Improved campaign performance by enabling optimizations within hours instead of days",
-      "Increased client retention rate from 76% to 92% year-over-year",
-      "Enabled agency to handle 40% more campaigns without increasing analyst headcount"
-    ],
-    technologies: ["Python", "Airflow", "React", "Redux", "D3.js", "BigQuery", "Snowflake", "WebSockets", "Kafka"],
-    mainImage: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&auto=format",
+    id: '4',
+    slug: 'ai-driven-crm-system',
+    title: 'AI-Driven CRM System',
+    subtitle: 'Intelligent customer relationship management',
+    category: 'AI & Machine Learning',
+    client: 'SalesPro Enterprises',
+    completionDate: '2023-09-18',
+    technologies: ['Python', 'TensorFlow', 'React', 'Node.js', 'MongoDB', 'AWS SageMaker'],
+    mainImage: 'https://images.unsplash.com/photo-1607703703674-df96af81dffa?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
     images: [
-      { 
-        url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format", 
-        caption: "Multi-channel performance overview" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1543286386-713bdd548da4?w=800&auto=format", 
-        caption: "Real-time campaign analytics" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1510511336377-1a9d3abcbd3c?w=800&auto=format", 
-        caption: "Custom client reporting module" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1606765962248-7ff407b51667?w=800&auto=format", 
-        caption: "Anomaly detection and alerts interface" 
-      }
+      'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Building a CRM system that leverages AI to predict customer behavior and optimize sales strategies.',
+    solution: 'We developed an intelligent CRM with predictive analytics, automated lead scoring, personalized recommendations, and natural language processing for customer interactions.',
+    results: '35% increase in sales conversion, 40% improvement in customer retention, and 20% reduction in sales cycle time.',
+    description: [
+      'AI-powered lead scoring and prioritization',
+      'Predictive analytics for sales forecasting',
+      'Automated email response suggestions',
+      'Customer sentiment analysis',
+      'Personalized product recommendations',
+      'Voice-enabled customer interaction logging',
     ],
     testimonial: {
-      quote: "The real-time dashboard TechBros built has been transformative for our agency. Not only has it dramatically improved our internal efficiency, but it's also become a powerful sales tool. Clients love the transparency and insights it provides.",
-      author: "David Park",
-      position: "CEO, AdMetrics",
-      avatar: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=200&auto=format"
+      content: "The AI capabilities have transformed our sales process. Our team can now focus on high-value prospects and provide more personalized service.",
+      author: "Robert Wilson",
+      position: "Sales Director, SalesPro Enterprises"
     },
-    nextProject: "supply-chain-management",
-    prevProject: "healthcare-management-system"
+    url: "https://salespro-ai.example.com"
   },
   {
-    id: 5,
-    slug: "supply-chain-management",
-    title: "Supply Chain Management",
-    category: "Enterprise Solution",
-    client: "Global Logistics International",
-    year: "2021",
-    role: "Enterprise Software Development, Supply Chain Consulting",
-    description: [
-      "Global Logistics International, a multinational logistics provider, needed to modernize their supply chain management systems to improve visibility, reduce delays, and enhance decision-making across their complex global operations.",
-      "We developed an end-to-end supply chain management platform that provided real-time tracking, predictive analytics, automated documentation, and integration with partner systems. The solution incorporated IoT sensors for physical asset tracking, blockchain for secure documentation, and AI for demand forecasting and route optimization.",
-      "The implementation transformed their operations, providing unprecedented visibility across the supply chain, reducing delays and exceptions, and enabling data-driven decision making that significantly improved efficiency and customer satisfaction."
-    ],
-    challenge: "The client managed a complex global supply chain with limited visibility between stages, resulting in inventory discrepancies, shipping delays, and excessive manual coordination. Legacy systems couldn't integrate with partner platforms, creating information gaps and compliance risks.",
-    solution: "We developed an integrated supply chain platform with IoT-enabled tracking, blockchain-secured documentation, and AI-powered forecasting and optimization. The system provided end-to-end visibility, automated customs documentation, and predictive analytics for proactive exception management.",
-    results: [
-      "Reduced order-to-delivery time by 23% through improved coordination and proactive exception management",
-      "Decreased inventory carrying costs by 17% through better forecasting and visibility",
-      "Reduced customs documentation errors by 94%, minimizing clearance delays",
-      "Improved on-time delivery rate from 82% to 96%, enhancing customer satisfaction"
-    ],
-    technologies: ["Java", "Spring", "React", "GraphQL", "MongoDB", "Kubernetes", "IoT", "Blockchain (Hyperledger)", "TensorFlow"],
-    mainImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&auto=format",
+    id: '5',
+    slug: 'smart-home-automation',
+    title: 'Smart Home Automation System',
+    subtitle: 'IoT-based home management',
+    category: 'Software Development',
+    client: 'HomeConnect Technologies',
+    completionDate: '2023-06-30',
+    technologies: ['IoT', 'React Native', 'Node.js', 'MongoDB', 'MQTT', 'AWS IoT'],
+    mainImage: 'https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
     images: [
-      { 
-        url: "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=800&auto=format", 
-        caption: "Global shipment tracking dashboard" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&auto=format", 
-        caption: "Inventory management and forecasting" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&auto=format", 
-        caption: "Route optimization and logistics planning" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1565935027310-546b088a71d1?w=800&auto=format", 
-        caption: "Blockchain-secured documentation system" 
-      }
+      'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1553451101-25086215c22f?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Creating a unified platform to control and automate various smart home devices from different manufacturers.',
+    solution: 'We built an integrated system with a mobile app and voice control capabilities that allows users to manage all their smart home devices from a single interface.',
+    results: 'Compatible with 200+ smart home devices, 40% reduction in energy consumption for users, and 98% user satisfaction rating.',
+    description: [
+      'Universal compatibility with major smart home brands',
+      'Voice control integration (Alexa, Google Assistant, Siri)',
+      'Automated routines and schedules',
+      'Energy usage monitoring and optimization',
+      'Security and surveillance management',
+      'Remote access and control',
     ],
     testimonial: {
-      quote: "TechBros delivered a solution that has truly transformed our operations. The end-to-end visibility and predictive capabilities have given us a competitive edge in an industry where timing and reliability are everything.",
-      author: "James Rodriguez",
-      position: "COO, Global Logistics International",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format"
+      content: "This platform has simplified smart home management for our customers. The intuitive interface and broad compatibility have been key differentiators in the market.",
+      author: "Lisa Park",
+      position: "CTO, HomeConnect Technologies"
     },
-    nextProject: "secure-banking-portal",
-    prevProject: "real-time-analytics-dashboard"
+    url: "https://homeconnect-smart.example.com"
   },
   {
-    id: 6,
-    slug: "secure-banking-portal",
-    title: "Secure Banking Portal",
-    category: "Cybersecurity",
-    client: "First National Trust",
-    year: "2021",
-    role: "Security Architecture, Full-stack Development",
-    description: [
-      "First National Trust needed to replace their outdated online banking portal with a modern, secure platform that would protect sensitive financial data while providing an intuitive user experience for their increasingly digital customer base.",
-      "We developed a state-of-the-art banking portal with multi-layered security architecture, including advanced encryption, multi-factor authentication, behavioral analytics, and real-time fraud detection. The system was designed with security-first principles while maintaining ease of use.",
-      "The new portal significantly enhanced the bank's digital capabilities while protecting customer data through multiple security layers. The solution successfully balanced rigorous security measures with an intuitive user experience, resulting in high adoption rates and positive feedback."
-    ],
-    challenge: "The client's legacy banking portal had security vulnerabilities and usability issues. They needed a solution that would meet strict regulatory requirements (PCI-DSS, FFIEC) and protect against evolving cyber threats while providing a modern, user-friendly experience.",
-    solution: "We architected a secure banking portal with defense-in-depth approach: end-to-end encryption, risk-based authentication, continuous transaction monitoring, and secure API architecture. The system included behavioral biometrics, anomaly detection, and secure communication channels.",
-    results: [
-      "Achieved zero security breaches since implementation (2+ years)",
-      "Reduced fraudulent transaction attempts by 76% through enhanced detection",
-      "Increased digital banking adoption by 34% among previous non-digital customers",
-      "Passed regulatory security audits with zero high-priority findings"
-    ],
-    technologies: ["Angular", "Node.js", "PostgreSQL", "AWS", "OAuth 2.0", "OpenID Connect", "SHA-256", "AES-256", "Behavioral Analytics"],
-    mainImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1200&auto=format",
+    id: '6',
+    slug: 'supply-chain-management',
+    title: 'Blockchain Supply Chain Management',
+    subtitle: 'Transparent and secure logistics tracking',
+    category: 'Enterprise Solution',
+    client: 'Global Logistics Corporation',
+    completionDate: '2023-10-12',
+    technologies: ['Blockchain', 'Hyperledger Fabric', 'React', 'Node.js', 'PostgreSQL', 'Docker'],
+    mainImage: 'https://images.unsplash.com/photo-1566802567708-50faee47f143?q=80&w=2656&auto=format&fit=crop&ixlib=rb-4.0.3',
     images: [
-      { 
-        url: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format", 
-        caption: "Secure login and authentication system" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&auto=format", 
-        caption: "Account management dashboard" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1565372195458-9de0b320ef04?w=800&auto=format", 
-        caption: "Secure transaction processing interface" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1560472355-536de3962603?w=800&auto=format", 
-        caption: "Security settings and monitoring" 
-      }
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?q=80&w=2668&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Developing a transparent, tamper-proof supply chain management system to track products from manufacturer to consumer.',
+    solution: 'We implemented a blockchain-based platform that provides real-time visibility into the supply chain, with immutable records and smart contracts for automated processes.',
+    results: '60% reduction in product verification time, 45% decrease in counterfeit incidents, and 25% improvement in overall supply chain efficiency.',
+    description: [
+      'Immutable blockchain record of product journey',
+      'QR code and RFID integration for tracking',
+      'Smart contracts for automatic payment processing',
+      'Real-time shipment monitoring',
+      'Temperature and condition tracking for sensitive goods',
+      'Supplier performance analytics',
     ],
     testimonial: {
-      quote: "Security was our primary concern in this project, and TechBros delivered a solution that exceeded our expectations. The multi-layered security approach gives us confidence, while our customers appreciate the intuitive interface.",
-      author: "Robert Chambers",
-      position: "CISO, First National Trust",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format"
+      content: "The blockchain solution has revolutionized our supply chain operations. We now have unprecedented transparency and trust throughout our global network.",
+      author: "Thomas Rodriguez",
+      position: "Global Supply Chain Director, Global Logistics Corporation"
     },
-    nextProject: "financial-app-redesign",
-    prevProject: "supply-chain-management"
+    url: "https://global-chain-solutions.example.com"
   },
   {
-    id: 7,
-    slug: "ai-powered-chatbot",
-    title: "AI-Powered Customer Service Chatbot",
-    category: "AI & Machine Learning",
-    client: "RetailX",
-    year: "2023",
-    role: "AI Development, Natural Language Processing",
-    description: [
-      "RetailX, a major e-commerce retailer, wanted to enhance customer support efficiency while maintaining a personalized customer experience. They needed a solution that could handle common inquiries 24/7 while seamlessly escalating complex issues to human agents.",
-      "We developed an AI-powered chatbot using advanced natural language processing and machine learning techniques. The chatbot was designed to understand context, maintain conversation history, and learn from interactions to continuously improve its responses.",
-      "The solution integrated with their existing CRM and order management systems, allowing customers to check order status, initiate returns, and get product recommendations without human intervention."
-    ],
-    challenge: "The client was experiencing a 43% increase in customer service inquiries due to business growth, but struggled to scale their support team effectively. Customer wait times were increasing, and satisfaction scores were declining. They needed a scalable solution that maintained their reputation for excellent customer service.",
-    solution: "We built a custom, AI-powered chatbot using GPT-4 for natural language understanding, with fine-tuning on retail-specific data. The system was integrated with their order management and CRM systems, allowing for personalized customer interactions with real-time data access.",
-    results: [
-      "Reduced first response time from 15 minutes to instant for 68% of inquiries",
-      "Decreased human agent load by 54%, allowing them to focus on complex issues",
-      "Improved customer satisfaction scores from 72% to 89% for chat support",
-      "Generated $2.3M in additional sales through AI-powered product recommendations"
-    ],
-    technologies: ["Python", "TensorFlow", "GPT-4", "React", "Node.js", "Redis", "Docker", "AWS Lambda"],
-    mainImage: "https://images.unsplash.com/photo-1581092921461-7d6720245ef2?w=1200&auto=format",
+    id: '7',
+    slug: 'fitness-tracking-app',
+    title: 'AI Fitness Companion App',
+    subtitle: 'Personalized workout and nutrition assistant',
+    category: 'Mobile App',
+    client: 'FitLife Innovations',
+    completionDate: '2023-08-05',
+    technologies: ['React Native', 'TensorFlow', 'Node.js', 'MongoDB', 'Computer Vision'],
+    mainImage: 'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3',
     images: [
-      { 
-        url: "https://images.unsplash.com/photo-1526378800651-c32d170fe6f8?w=800&auto=format", 
-        caption: "Chatbot interface on various devices" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=800&auto=format", 
-        caption: "Agent handoff workflow" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?w=800&auto=format", 
-        caption: "Analytics dashboard" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1587691592099-24045742c181?w=800&auto=format", 
-        caption: "Training and improvement workflow" 
-      }
+      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Creating a fitness app that uses AI to provide personalized workout plans, real-time form correction, and nutrition advice.',
+    solution: 'We developed a mobile app with computer vision technology to analyze workout form, AI-driven personalization, and integration with wearable devices.',
+    results: '1 million+ active users, 85% user retention rate after 3 months, and average fitness goal achievement 30% faster compared to traditional methods.',
+    description: [
+      'Real-time exercise form analysis and feedback',
+      'Personalized workout plans based on goals and progress',
+      'Nutrition tracking and meal recommendations',
+      'Integration with fitness wearables and health apps',
+      'Progress visualization and achievement tracking',
+      'Community features and challenges',
     ],
     testimonial: {
-      quote: "The AI chatbot TechBros developed has transformed our customer service operations. Not only has it significantly reduced wait times and operational costs, but it's also contributed directly to our bottom line through smart product recommendations.",
-      author: "Jennifer Morris",
-      position: "VP of Customer Experience, RetailX",
-      avatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=200&auto=format"
+      content: "The AI-powered features truly set this app apart. Users particularly love the form correction and personalized recommendations that adapt to their progress.",
+      author: "Alex Torres",
+      position: "CEO, FitLife Innovations"
     },
-    nextProject: "iot-smart-manufacturing",
-    prevProject: "secure-banking-portal"
+    url: "https://fitlife-ai.example.com"
   },
   {
-    id: 8,
-    slug: "iot-smart-manufacturing",
-    title: "IoT Smart Manufacturing Platform",
-    category: "Software Development",
-    client: "Precision Industries",
-    year: "2023",
-    role: "IoT Development, Industrial Software Engineering",
-    description: [
-      "Precision Industries, a manufacturer of aerospace components, needed to modernize their factory operations to improve efficiency, reduce waste, and maintain their competitive edge in a highly regulated industry.",
-      "We developed a comprehensive IoT platform that connected their manufacturing equipment, tracked materials, monitored environmental conditions, and provided real-time analytics on production efficiency and quality control.",
-      "The system leveraged edge computing for real-time monitoring and decision-making, with cloud integration for analytics, reporting, and digital twin simulation of manufacturing processes."
-    ],
-    challenge: "The client operated a high-precision manufacturing facility with legacy equipment that lacked connectivity. They experienced 8% production waste and had limited visibility into bottlenecks. They needed to modernize without disrupting ongoing production or compromising quality in their highly regulated industry.",
-    solution: "We designed a multi-layered IoT platform with non-invasive sensors retrofitted to existing equipment, edge gateways for real-time monitoring, and a cloud platform for analytics. The system included predictive maintenance, material tracking, and quality control automation with digital twin modeling.",
-    results: [
-      "Reduced manufacturing waste by 62%, saving $3.1M annually",
-      "Decreased unplanned equipment downtime by 78%",
-      "Improved production throughput by 24% without additional capital investment",
-      "Enhanced regulatory compliance with automated documentation and traceability"
-    ],
-    technologies: ["Python", "C++", "MQTT", "Node.js", "React", "PostgreSQL", "TensorFlow", "Azure IoT Hub", "Docker"],
-    mainImage: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&auto=format",
+    id: '8',
+    slug: 'virtual-reality-education',
+    title: 'VR Educational Platform',
+    subtitle: 'Immersive learning experiences',
+    category: 'Software Development',
+    client: 'EduVerse Academy',
+    completionDate: '2023-11-08',
+    technologies: ['Unity3D', 'C#', 'WebXR', 'React', 'Node.js', 'MongoDB'],
+    mainImage: 'https://images.unsplash.com/photo-1617802690992-15d93263d3a9?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
     images: [
-      { 
-        url: "https://images.unsplash.com/photo-1582828633619-4ed05228c006?w=800&auto=format", 
-        caption: "Factory floor monitoring system" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&auto=format", 
-        caption: "Equipment monitoring interface" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?w=800&auto=format", 
-        caption: "Quality control dashboard" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1579403124614-197f69d8187b?w=800&auto=format", 
-        caption: "Digital twin simulation" 
-      }
+      'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1626379953822-baec19cd2998?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Developing an educational platform that leverages virtual reality to create immersive, engaging learning experiences across various subjects.',
+    solution: 'We created a VR platform with interactive 3D environments for subjects like biology, history, and physics, allowing students to experience concepts firsthand.',
+    results: 'Implemented in 150+ schools, 45% improvement in student comprehension of complex topics, and 60% increase in student engagement.',
+    description: [
+      'Detailed 3D anatomical models for biology',
+      'Historical reconstructions of ancient civilizations',
+      'Interactive physics experiments and simulations',
+      'Virtual field trips to inaccessible locations',
+      'Collaborative multiplayer learning spaces',
+      'Teacher dashboard for monitoring and assessment',
     ],
     testimonial: {
-      quote: "The IoT platform developed by TechBros has revolutionized our manufacturing operations. We've not only improved efficiency and reduced waste, but we've gained unprecedented visibility into our processes that helps us continuously improve.",
-      author: "Richard Stephens",
-      position: "Chief Operations Officer, Precision Industries",
-      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&auto=format"
+      content: "Our students are experiencing science and history in ways we never thought possible. The platform has transformed our approach to teaching complex subjects.",
+      author: "Dr. Emily Watson",
+      position: "Director of Innovation, EduVerse Academy"
     },
-    nextProject: "vr-training-platform",
-    prevProject: "ai-powered-chatbot"
+    url: "https://eduverse-vr.example.com"
   },
   {
-    id: 9,
-    slug: "vr-training-platform",
-    title: "VR Training Platform",
-    category: "Software Development",
-    client: "SafetyFirst Industries",
-    year: "2022",
-    role: "VR Development, Learning Management Systems",
-    description: [
-      "SafetyFirst Industries, a company specializing in industrial safety training, wanted to transform their traditional training programs into immersive virtual reality experiences to improve engagement, knowledge retention, and practical skill development.",
-      "We developed a comprehensive VR training platform that simulated high-risk industrial environments and scenarios, allowing trainees to practice emergency responses and safety procedures in a realistic but completely safe virtual environment.",
-      "The platform included a content management system for creating and modifying scenarios, a learning management system for tracking progress and certification, and analytics for measuring effectiveness and identifying areas for improvement."
-    ],
-    challenge: "The client's traditional training methods were costly, logistically complex, and had knowledge retention issues. They needed a scalable solution that could realistically simulate dangerous scenarios without risk, while providing objective assessment of trainee performance and compliance tracking.",
-    solution: "We developed a VR training platform using Unity3D with high-fidelity scenarios for hazardous environments. The platform included haptic feedback for equipment operation, natural interaction patterns, and realistic consequence simulation, with an integrated LMS for tracking and certification.",
-    results: [
-      "Improved knowledge retention by 78% compared to traditional methods",
-      "Reduced training time by 47% while improving competency scores",
-      "Decreased training costs by 64% through reduced equipment and facility needs",
-      "Enabled the client to expand their training business to new geographic markets"
-    ],
-    technologies: ["Unity3D", "C#", "Oculus SDK", "WebGL", "Node.js", "MongoDB", "WebRTC", "AWS"],
-    mainImage: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=1200&auto=format",
+    id: '9',
+    slug: 'predictive-maintenance-system',
+    title: 'Industrial IoT Maintenance Platform',
+    subtitle: 'Predictive maintenance for manufacturing',
+    category: 'Data Visualization',
+    client: 'IndusTech Manufacturing',
+    completionDate: '2023-04-20',
+    technologies: ['IoT', 'Python', 'TensorFlow', 'React', 'InfluxDB', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
     images: [
-      { 
-        url: "https://images.unsplash.com/photo-1626387346567-68d9613822b1?w=800&auto=format", 
-        caption: "VR training in progress" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?w=800&auto=format", 
-        caption: "Scenario creation interface" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1544725121-be3bf52e2dc8?w=800&auto=format", 
-        caption: "Training analytics dashboard" 
-      },
-      { 
-        url: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=800&auto=format", 
-        caption: "VR equipment setup" 
-      }
+      'https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1583770450908-104c1a133a70?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Building a system that predicts machine failures before they occur, reducing downtime and maintenance costs in manufacturing facilities.',
+    solution: 'We developed an IoT platform with sensors that monitor equipment health, AI algorithms to predict failures, and a dashboard for maintenance scheduling.',
+    results: '70% reduction in unexpected downtime, 35% decrease in maintenance costs, and 25% increase in equipment lifespan.',
+    description: [
+      'Real-time equipment monitoring and diagnostics',
+      'AI-powered failure prediction and anomaly detection',
+      'Maintenance scheduling and resource optimization',
+      'Digital twin visualization of factory operations',
+      'Automated alert system for maintenance staff',
+      'Historical performance analysis and reporting',
     ],
     testimonial: {
-      quote: "The VR training platform has completely transformed how we deliver safety training. Our clients are seeing dramatic improvements in knowledge retention and practical skills, while significantly reducing their training costs and time-to-competency.",
-      author: "Amanda Torres",
-      position: "Training Director, SafetyFirst Industries",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format"
+      content: "The predictive maintenance platform has transformed our operations. We've significantly reduced downtime and can now plan maintenance activities with unprecedented precision.",
+      author: "James Wong",
+      position: "Operations Director, IndusTech Manufacturing"
     },
-    nextProject: "financial-app-redesign",
-    prevProject: "iot-smart-manufacturing"
+    url: "https://industech-predictive.example.com"
+  },
+  {
+    id: '10',
+    slug: 'real-estate-vr-platform',
+    title: 'Virtual Property Showcase Platform',
+    subtitle: 'Immersive real estate viewing experience',
+    category: 'Web Development',
+    client: 'Prime Properties Group',
+    completionDate: '2023-02-15',
+    technologies: ['WebGL', 'Three.js', 'React', 'Node.js', 'MongoDB', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2673&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=2596&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=2673&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Creating a platform that allows potential buyers to virtually tour properties in detail without physical visits.',
+    solution: 'We built a web-based platform with 3D virtual tours, interactive floor plans, neighborhood exploration, and AR furniture placement.',
+    results: '45% increase in qualified leads, 30% reduction in time to close sales, and ability to reach international buyers effectively.',
+    description: [
+      '360° virtual property tours with interactive hotspots',
+      'Detailed 3D floor plans and space visualization',
+      'Neighborhood information and amenity exploration',
+      'AR furniture placement to visualize spaces',
+      'Virtual staging of empty properties',
+      'Direct inquiry and scheduling system',
+    ],
+    testimonial: {
+      content: "This platform has revolutionized our property marketing. Clients can now explore homes in detail from anywhere in the world, significantly expanding our market reach.",
+      author: "Rebecca Gonzalez",
+      position: "Marketing Director, Prime Properties Group"
+    },
+    url: "https://prime-virtual-tours.example.com"
+  },
+  {
+    id: '11',
+    slug: 'telemedicine-platform',
+    title: 'Advanced Telemedicine Platform',
+    subtitle: 'Remote healthcare delivery system',
+    category: 'Web Development',
+    client: 'Global Health Network',
+    completionDate: '2023-07-08',
+    technologies: ['React', 'Node.js', 'WebRTC', 'MongoDB', 'HIPAA Compliance', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Developing a secure, reliable platform for remote medical consultations with integrated patient monitoring and record keeping.',
+    solution: 'We created a HIPAA-compliant telemedicine solution with high-quality video consultations, electronic health records, prescription management, and remote monitoring.',
+    results: '50,000+ consultations monthly, 95% patient satisfaction rate, and 40% reduction in unnecessary emergency room visits.',
+    description: [
+      'High-definition video consultations',
+      'Secure messaging and file sharing',
+      'Electronic health record integration',
+      'E-prescription capabilities',
+      'Remote patient monitoring integration',
+      'Appointment scheduling and reminders',
+    ],
+    testimonial: {
+      content: "This platform has enabled us to provide quality healthcare to patients regardless of location. The seamless experience and robust features have exceeded our expectations.",
+      author: "Dr. Sophia Kim",
+      position: "Chief Digital Officer, Global Health Network"
+    },
+    url: "https://globalhealth-telemedicine.example.com"
+  },
+  {
+    id: '12',
+    slug: 'sustainable-agriculture-platform',
+    title: 'Smart Agriculture Management System',
+    subtitle: 'IoT-based farming optimization',
+    category: 'AI & Machine Learning',
+    client: 'AgriTech Innovations',
+    completionDate: '2023-05-22',
+    technologies: ['IoT', 'Python', 'Machine Learning', 'React', 'Node.js', 'InfluxDB', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1539187577537-e54cf54ae2f8?q=80&w=2667&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?q=80&w=2650&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Creating a comprehensive platform to optimize farming operations using IoT sensors, weather data, and machine learning.',
+    solution: 'We developed a system with soil sensors, automated irrigation, crop health monitoring, and predictive analytics for yield optimization.',
+    results: '30% increase in crop yield, 45% reduction in water usage, and 25% decrease in fertilizer and pesticide application.',
+    description: [
+      'Real-time soil moisture and nutrient monitoring',
+      'Weather data integration and forecasting',
+      'Automated irrigation and fertilization systems',
+      'Drone-based crop health assessment',
+      'Predictive analytics for optimal planting and harvesting',
+      'Mobile app for remote monitoring and control',
+    ],
+    testimonial: {
+      content: "This system has transformed our approach to farming. We're seeing higher yields while using fewer resources and having less environmental impact.",
+      author: "Carlos Mendez",
+      position: "Operations Manager, AgriTech Innovations"
+    },
+    url: "https://agritech-smart.example.com"
+  },
+  {
+    id: '13',
+    slug: 'cybersecurity-threat-detection',
+    title: 'AI-Powered Security System',
+    subtitle: 'Advanced threat detection and response',
+    category: 'Cybersecurity',
+    client: 'SecureNet Defenders',
+    completionDate: '2023-09-30',
+    technologies: ['Python', 'TensorFlow', 'Elasticsearch', 'Kibana', 'React', 'Node.js', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1614064548237-096d9c83154c?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Developing an intelligent security system capable of detecting and responding to sophisticated cyber threats in real-time.',
+    solution: 'We built an AI-powered platform that analyzes network traffic patterns, identifies anomalies, and automatically responds to security incidents.',
+    results: '85% faster threat detection, 65% reduction in false positives, and 40% improvement in incident response time.',
+    description: [
+      'Real-time traffic analysis and anomaly detection',
+      'Machine learning-based threat identification',
+      'Automated incident response workflows',
+      'Comprehensive security analytics dashboard',
+      'Threat intelligence integration',
+      'Compliance reporting and documentation',
+    ],
+    testimonial: {
+      content: "The AI capabilities of this security system have dramatically improved our threat detection accuracy and response times. It's like having an expert security team working 24/7.",
+      author: "Natalie Chen",
+      position: "CISO, SecureNet Defenders"
+    },
+    url: "https://securenet-ai.example.com"
+  },
+  {
+    id: '14',
+    slug: 'retail-analytics-platform',
+    title: 'Retail Analytics Dashboard',
+    subtitle: 'Customer behavior and sales insights',
+    category: 'Data Visualization',
+    client: 'GlobalMart Retail',
+    completionDate: '2023-03-25',
+    technologies: ['React', 'D3.js', 'Python', 'TensorFlow', 'PostgreSQL', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?q=80&w=2672&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Creating a comprehensive analytics platform to provide actionable insights into customer behavior, inventory management, and sales performance.',
+    solution: 'We developed an interactive dashboard with advanced visualizations, customer journey mapping, inventory optimization, and predictive sales forecasting.',
+    results: '25% increase in targeted promotion effectiveness, 20% reduction in inventory costs, and 15% improvement in overall sales.',
+    description: [
+      'Interactive sales and inventory visualizations',
+      'Customer segmentation and behavior analysis',
+      'Heatmapping of store traffic patterns',
+      'Predictive inventory management',
+      'Sales forecasting and trend analysis',
+      'Competitive pricing intelligence',
+    ],
+    testimonial: {
+      content: "This analytics platform has given us unprecedented insights into our operations. We can now make data-driven decisions that have measurably improved our bottom line.",
+      author: "Daniel Thompson",
+      position: "Retail Analytics Director, GlobalMart Retail"
+    },
+    url: "https://globalmart-analytics.example.com"
+  },
+  {
+    id: '15',
+    slug: 'virtual-event-platform',
+    title: 'Interactive Virtual Event Platform',
+    subtitle: 'Engaging remote conference experiences',
+    category: 'Web Development',
+    client: 'EventHorizon Productions',
+    completionDate: '2023-06-10',
+    technologies: ['React', 'WebRTC', 'Socket.io', 'Node.js', 'MongoDB', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2612&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1559223607-a43c990c692c?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Building a virtual event platform that provides an engaging, interactive experience comparable to in-person conferences and exhibitions.',
+    solution: 'We created an immersive platform with high-quality video streaming, interactive exhibition spaces, networking lounges, and analytics for event organizers.',
+    results: 'Successfully hosted 200+ virtual events with 500,000+ attendees, 85% attendee engagement rate, and 40% cost savings compared to physical events.',
+    description: [
+      'HD livestreaming with multi-presenter capabilities',
+      'Interactive 3D exhibition halls and booths',
+      'Networking tools and matchmaking algorithms',
+      'Live polls, Q&A, and audience engagement features',
+      'Virtual breakout rooms for discussions',
+      'Comprehensive analytics for exhibitors and organizers',
+    ],
+    testimonial: {
+      content: "This platform delivered beyond our expectations. Attendees were truly engaged, and we could provide sponsors with valuable analytics that aren't even possible with physical events.",
+      author: "Michelle Peterson",
+      position: "CEO, EventHorizon Productions"
+    },
+    url: "https://eventhorizon-virtual.example.com"
+  },
+  {
+    id: '16',
+    slug: 'autonomous-delivery-system',
+    title: 'Autonomous Delivery Management',
+    subtitle: 'Self-driving delivery fleet control',
+    category: 'AI & Machine Learning',
+    client: 'DeliverX Logistics',
+    completionDate: '2023-10-05',
+    technologies: ['Python', 'TensorFlow', 'Computer Vision', 'React', 'Node.js', 'PostgreSQL', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1646726258111-fba19ce43f3e?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1572636583345-a787eb6ce23e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Developing a comprehensive management system for a fleet of autonomous delivery vehicles operating in urban environments.',
+    solution: 'We built a platform with real-time tracking, route optimization, obstacle detection and avoidance, and an intuitive control center for human supervisors.',
+    results: '30% reduction in delivery times, 40% decrease in operational costs, and 99.8% successful delivery rate.',
+    description: [
+      'Real-time fleet monitoring and tracking',
+      'Dynamic route optimization and traffic adaptation',
+      'Computer vision for obstacle detection',
+      'Remote intervention capabilities',
+      'Customer delivery notifications and tracking',
+      'Performance analytics and optimization',
+    ],
+    testimonial: {
+      content: "This system has transformed our delivery operations. The autonomous capabilities combined with the intuitive management interface have resulted in significant efficiency gains.",
+      author: "Victor Ramirez",
+      position: "Innovation Director, DeliverX Logistics"
+    },
+    url: "https://deliverx-autonomous.example.com"
+  },
+  {
+    id: '17',
+    slug: 'digital-twin-manufacturing',
+    title: 'Digital Twin Factory System',
+    subtitle: 'Virtual replica of manufacturing facilities',
+    category: 'Enterprise Solution',
+    client: 'PrecisionTech Industries',
+    completionDate: '2023-08-15',
+    technologies: ['Unity3D', 'IoT', 'C#', 'React', 'Node.js', 'InfluxDB', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1588430654146-55987c71ae9f?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1586528116022-aeda1700c0ab?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1589792923062-537939a21da8?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Creating a digital twin system that provides a real-time virtual replica of manufacturing facilities for monitoring, simulation, and optimization.',
+    solution: 'We developed a 3D virtual environment synchronized with real-world sensors that allows for visualization, simulation, and predictive maintenance.',
+    results: '25% increase in production efficiency, 30% reduction in quality issues, and 20% decrease in energy consumption.',
+    description: [
+      '3D visualization of entire manufacturing facilities',
+      'Real-time data synchronization with physical equipment',
+      'Process simulation and optimization',
+      'What-if scenario testing',
+      'Predictive maintenance modeling',
+      'Training simulations for operators',
+    ],
+    testimonial: {
+      content: "The digital twin system has given us unprecedented visibility into our operations. We can now optimize processes in the virtual environment before implementing changes on the factory floor.",
+      author: "Eliza Schwartz",
+      position: "Operations Director, PrecisionTech Industries"
+    },
+    url: "https://precisiontech-twin.example.com"
+  },
+  {
+    id: '18',
+    slug: 'language-learning-platform',
+    title: 'AI Language Learning App',
+    subtitle: 'Personalized language education',
+    category: 'Mobile App',
+    client: 'LinguaLearn Global',
+    completionDate: '2023-04-05',
+    technologies: ['React Native', 'NLP', 'TensorFlow', 'Node.js', 'MongoDB', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1513077202514-c511b41bd4c7?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2673&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Developing a language learning application that adapts to each user's learning style, pace, and goals while providing accurate feedback on pronunciation and grammar.',
+    solution: 'We built an AI-powered app with speech recognition, adaptive learning paths, personalized exercises, and conversational practice with virtual tutors.',
+    results: '5 million+ active users, 85% improvement in language proficiency after 3 months, and 4.8-star average app store rating.',
+    description: [
+      'Speech recognition and pronunciation feedback',
+      'Adaptive learning algorithm',
+      'Virtual conversation partners with NLP',
+      'Personalized vocabulary building',
+      'Grammar analysis and correction',
+      'Cultural context and real-world usage examples',
+    ],
+    testimonial: {
+      content: "This app has revolutionized how people learn languages. The personalization and immediate feedback create an immersive experience that truly accelerates learning.",
+      author: "Sophia Martinez",
+      position: "Chief Learning Officer, LinguaLearn Global"
+    },
+    url: "https://lingualearning-ai.example.com"
+  },
+  {
+    id: '19',
+    slug: 'fintech-investment-platform',
+    title: 'Robo-Advisor Investment Platform',
+    subtitle: 'Automated financial management',
+    category: 'Software Development',
+    client: 'WealthWise Financial',
+    completionDate: '2023-07-15',
+    technologies: ['React', 'Python', 'Machine Learning', 'Node.js', 'PostgreSQL', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2415&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1427751840561-9852520f8ce8?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Creating an automated investment platform that provides personalized portfolio management and financial advice based on individual goals and risk tolerance.',
+    solution: 'We developed a robo-advisor platform with risk assessment, portfolio optimization, automatic rebalancing, and personalized financial insights.',
+    results: '$500 million+ assets under management, 35% higher returns compared to traditional advisors, and 80% cost savings for end users.',
+    description: [
+      'Personalized risk assessment and profiling',
+      'AI-driven portfolio construction and optimization',
+      'Automatic rebalancing and tax-loss harvesting',
+      'Real-time market data integration',
+      'Goal-based financial planning tools',
+      'Performance tracking and reporting',
+    ],
+    testimonial: {
+      content: "This platform has democratized access to sophisticated investment strategies that were previously only available to high-net-worth clients. The performance has been outstanding.",
+      author: "Jonathan Lee",
+      position: "CEO, WealthWise Financial"
+    },
+    url: "https://wealthwise-robo.example.com"
+  },
+  {
+    id: '20',
+    slug: 'smart-city-management',
+    title: 'Smart City Management Platform',
+    subtitle: 'Urban infrastructure optimization',
+    category: 'Enterprise Solution',
+    client: 'MetroSmart Solutions',
+    completionDate: '2023-11-30',
+    technologies: ['IoT', 'Python', 'Machine Learning', 'React', 'Node.js', 'PostgreSQL', 'AWS'],
+    mainImage: 'https://images.unsplash.com/photo-1518184198618-80da9bdf17aa?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3',
+    images: [
+      'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2844&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1534293230397-c067fc201750?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3',
+    ],
+    challenge: 'Developing an integrated platform for managing various aspects of urban infrastructure, including traffic, energy, waste management, and public safety.',
+    solution: 'We built a comprehensive system with IoT sensor integration, real-time monitoring dashboards, predictive analytics, and automated response systems.',
+    results: '30% reduction in traffic congestion, 25% decrease in energy consumption, and 40% improvement in emergency response times.',
+    description: [
+      'Traffic monitoring and adaptive signal control',
+      'Smart grid energy management',
+      'Waste collection optimization',
+      'Public safety and emergency response coordination',
+      'Environmental monitoring',
+      'Citizen engagement and reporting portal',
+    ],
+    testimonial: {
+      content: "This platform has transformed how we manage our city's infrastructure. The integrated approach and predictive capabilities have improved efficiency and quality of life for residents.",
+      author: "Mayor Sarah Johnson",
+      position: "City of Metropolis"
+    },
+    url: "https://metrosmart-city.example.com"
   }
 ];
