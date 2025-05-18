@@ -29,15 +29,33 @@ const navItems: NavItem[] = [
   { label: "Blog", href: "/blog" },
 ];
 
+// Map of category names to URL paths - Ensuring these match the routes in App.tsx
+const categoryUrlMap: Record<string, string> = {
+  "Development": "development",
+  "Design": "design",
+  "Marketing": "marketing",
+  "Infrastructure": "infrastructure",
+  "Education": "education",
+  "Healthcare": "healthcare",
+  "E-commerce": "ecommerce",
+  "AI & Data": "ai-data",
+  "Security": "security",
+  "Consulting": "consulting",
+  "Forex Trading": "forex",
+  "Cryptocurrency": "crypto"
+};
+
 // Organize service data for navbar dropdown
 const getServiceCategories = () => {
   const categories = Array.from(new Set(serviceDetails.map(item => item.category)));
   
   const serviceCategories = categories.map(category => {
+    const categoryUrl = categoryUrlMap[category] || category.toLowerCase().replace(/\s+/g, '-').replace('&', 'and');
     const servicesInCategory = serviceDetails.filter(service => service.category === category);
+    
     return {
       label: category,
-      href: `/services/${category.toLowerCase().replace(/\s+/g, '-').replace('&', 'and')}`,
+      href: `/services/${categoryUrl}`,
       services: servicesInCategory.map(service => ({
         label: service.title,
         href: `/services/${service.slug}`,

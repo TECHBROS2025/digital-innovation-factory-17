@@ -51,7 +51,7 @@ const ServicesPage = () => {
     "Cryptocurrency": <Bitcoin className="w-10 h-10" />
   };
 
-  // Map category to URL segment - Corrected and confirmed these match the routes in App.tsx
+  // Map category to URL segment - Ensuring these match the routes in App.tsx
   const categoryUrls = {
     "Development": "development",
     "Infrastructure": "infrastructure",
@@ -129,7 +129,13 @@ const ServicesPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
               {categories.map((category, index) => {
                 const categoryKey = category as keyof typeof categoryUrls;
-                const url = categoryUrls[categoryKey] || category.toLowerCase().replace(/\s+/g, '-');
+                const url = categoryUrls[categoryKey];
+                
+                // Make sure we have a valid URL
+                if (!url) {
+                  console.error(`No URL mapping found for category: ${category}`);
+                  return null;
+                }
                 
                 return (
                   <Link 

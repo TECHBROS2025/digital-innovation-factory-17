@@ -47,20 +47,20 @@ const Services = () => {
     };
   }, []);
 
-  // Map category names to URL paths
+  // Map category names to URL paths - Ensuring these match the routes in App.tsx
   const categoryUrls: Record<string, string> = {
-    "Development": "services/development",
-    "Design": "services/design",
-    "Marketing": "services/marketing",
-    "Infrastructure": "services/infrastructure",
-    "Education": "services/education",
-    "Healthcare": "services/healthcare",
-    "E-commerce": "services/ecommerce",
-    "AI & Data": "services/ai-data",
-    "Security": "services/security",
-    "Consulting": "services/consulting",
-    "Forex Trading": "services/forex",
-    "Cryptocurrency": "services/crypto"
+    "Development": "development",
+    "Design": "design",
+    "Marketing": "marketing",
+    "Infrastructure": "infrastructure",
+    "Education": "education",
+    "Healthcare": "healthcare",
+    "E-commerce": "ecommerce",
+    "AI & Data": "ai-data",
+    "Security": "security",
+    "Consulting": "consulting",
+    "Forex Trading": "forex",
+    "Cryptocurrency": "crypto"
   };
 
   // Map categories to icons
@@ -109,17 +109,26 @@ const Services = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {featuredServices.map((service: any, index) => (
-            <ServiceCard
-              key={service.id}
-              icon={service.icon}
-              title={service.category}
-              description={`${service.title} and more solutions for your business needs.`}
-              index={index}
-              slug={categoryUrls[service.category] || service.category.toLowerCase().replace(/\s+/g, '-')}
-              category={service.category}
-            />
-          ))}
+          {featuredServices.map((service: any, index) => {
+            // Ensure we have a valid URL for this category
+            const categoryUrl = categoryUrls[service.category];
+            if (!categoryUrl) {
+              console.error(`No URL mapping found for category: ${service.category}`);
+              return null;
+            }
+            
+            return (
+              <ServiceCard
+                key={service.id}
+                icon={service.icon}
+                title={service.category}
+                description={`${service.title} and more solutions for your business needs.`}
+                index={index}
+                slug={categoryUrl}
+                category={service.category}
+              />
+            );
+          })}
         </div>
         
         <div className={`text-center mt-12 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100" : "opacity-0"}`}>

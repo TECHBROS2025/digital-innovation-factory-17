@@ -174,6 +174,12 @@ const ServiceCard = ({
             />
             {/* Dark overlay for better text visibility in dark mode */}
             <div className="absolute inset-0 bg-black/30 dark:bg-black/50"></div>
+            
+            <div className="absolute bottom-0 left-0 w-full p-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-md">
+                {title}
+              </h3>
+            </div>
           </div>
         )}
         <div className="p-6 md:p-8 flex flex-col flex-grow">
