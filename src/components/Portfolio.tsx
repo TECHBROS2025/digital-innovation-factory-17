@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 import { projects } from "../data/projects";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight, Filter } from "lucide-react";
 
 const Portfolio = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -11,6 +11,7 @@ const Portfolio = () => {
   const [titleVisible, setTitleVisible] = useState(false);
   const [visibleProjects, setVisibleProjects] = useState(6);
   const [category, setCategory] = useState<string>("all");
+  const [showCategoryMenu, setShowCategoryMenu] = useState(false);
 
   useEffect(() => {
     const titleObserver = new IntersectionObserver(
@@ -55,6 +56,10 @@ const Portfolio = () => {
     setVisibleProjects(projects.length);
   };
 
+  const toggleCategoryMenu = () => {
+    setShowCategoryMenu(!showCategoryMenu);
+  };
+
   return (
     <section id="portfolio" ref={sectionRef} className="section-padding relative overflow-hidden">
       {/* Background elements */}
@@ -76,8 +81,43 @@ const Portfolio = () => {
             Explore our portfolio of successful projects across various industries, demonstrating our expertise and the measurable impact we've delivered.
           </p>
 
-          {/* Category filters */}
-          <div className="flex flex-wrap justify-center gap-2 mt-6">
+          {/* Mobile category filter dropdown */}
+          <div className="md:hidden relative mt-6">
+            <button
+              onClick={toggleCategoryMenu}
+              className="flex items-center justify-between w-full px-4 py-2 bg-white border border-gray-200 rounded-lg shadow-sm"
+            >
+              <span className="flex items-center">
+                <Filter size={16} className="mr-2" />
+                {categories.find(cat => cat.id === category)?.label || 'All Projects'}
+              </span>
+              <ChevronRight size={16} className={`transition-transform ${showCategoryMenu ? 'rotate-90' : ''}`} />
+            </button>
+            
+            {showCategoryMenu && (
+              <div className="absolute top-full left-0 right-0 mt-2 p-2 bg-white rounded-lg shadow-lg z-10 border border-gray-100">
+                {categories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => {
+                      setCategory(cat.id);
+                      setShowCategoryMenu(false);
+                    }}
+                    className={`block w-full text-left px-3 py-2 rounded-md text-sm ${
+                      category === cat.id 
+                        ? "bg-vibrant-purple/10 text-vibrant-purple"
+                        : "hover:bg-gray-50"
+                    }`}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Desktop category filters */}
+          <div className="hidden md:flex flex-wrap justify-center gap-2 mt-6">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -94,18 +134,30 @@ const Portfolio = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.slice(0, visibleProjects).map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              image={project.mainImage}
-              title={project.title}
-              category={project.category}
-              slug={project.slug}
-              index={index}
-            />
-          ))}
-        </div>
+        {filteredProjects.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.slice(0, visibleProjects).map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                image={project.mainImage}
+                title={project.title}
+                category={project.category}
+                slug={project.slug}
+                index={index}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="py-16 text-center">
+            <h3 className="text-xl text-gray-600">No projects found in this category.</h3>
+            <button 
+              onClick={() => setCategory("all")}
+              className="mt-4 px-4 py-2 text-vibrant-purple border border-vibrant-purple/20 rounded-full hover:bg-vibrant-purple/10"
+            >
+              View all projects
+            </button>
+          </div>
+        )}
 
         {filteredProjects.length > visibleProjects && (
           <div className="text-center mt-10">
@@ -123,10 +175,10 @@ const Portfolio = () => {
           }`}>
           <Link 
             to="/projects"
-            className="inline-flex items-center px-6 py-3 bg-vibrant-purple text-white rounded-full hover:bg-vibrant-purple/90 transition-all font-medium"
+            className="inline-flex items-center px-6 py-3 bg-vibrant-purple text-white rounded-full hover:bg-vibrant-purple/90 transition-all font-medium group"
           >
             View All Projects
-            <ArrowRight size={18} className="ml-2" />
+            <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </div>
