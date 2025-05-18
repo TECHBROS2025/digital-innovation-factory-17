@@ -8,6 +8,13 @@ import Footer from "./Footer";
 import ScrollProgress from "./ScrollProgress";
 import { toast } from "sonner";
 
+interface ProjectImage {
+  url: string;
+  caption?: string;
+}
+
+type ProjectImageType = string | ProjectImage;
+
 const ProjectDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -39,7 +46,7 @@ const ProjectDetail = () => {
   const projectYear = new Date(project.completionDate).getFullYear().toString();
   
   // Use client or category as role if needed
-  const projectRole = project.category;
+  const projectRole = project.role || project.category;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -225,13 +232,26 @@ const ProjectDetail = () => {
                       <p className="text-gray-700 italic mb-4">{project.testimonial.content}</p>
                       
                       <div className="flex items-center">
-                        {/* No avatar needed since it doesn't exist in our data structure */}
                         <div>
                           <p className="font-medium">{project.testimonial.author}</p>
                           <p className="text-sm text-gray-600">{project.testimonial.position}</p>
                         </div>
                       </div>
                     </div>
+                  </div>
+                )}
+
+                {project.url && (
+                  <div className="mt-4">
+                    <a 
+                      href={project.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-tech-400 hover:bg-tech-500 text-white rounded-lg transition-colors"
+                    >
+                      <span>Visit Project</span>
+                      <ExternalLink size={16} />
+                    </a>
                   </div>
                 )}
               </div>
@@ -245,20 +265,26 @@ const ProjectDetail = () => {
             <h2 className="text-3xl font-bold mb-10">Project Gallery</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {Array.isArray(project.images) && project.images.map((image, index) => (
-                <div key={index} className="overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
-                  <img 
-                    src={typeof image === 'string' ? image : image.url}
-                    alt={`Project image ${index + 1}`}
-                    className="w-full h-auto transition-transform duration-500 hover:scale-105"
-                  />
-                  {typeof image !== 'string' && image.caption && (
-                    <div className="p-4 bg-white">
-                      <p className="text-gray-700">{image.caption}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
+              {project.images && project.images.map((image, index) => {
+                // Handle both string and object with url/caption
+                const imageUrl = typeof image === 'string' ? image : image.url;
+                const imageCaption = typeof image === 'string' ? null : image.caption;
+                
+                return (
+                  <div key={index} className="overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                    <img 
+                      src={imageUrl}
+                      alt={`Project image ${index + 1}`}
+                      className="w-full h-auto transition-transform duration-500 hover:scale-105"
+                    />
+                    {imageCaption && (
+                      <div className="p-4 bg-white">
+                        <p className="text-gray-700">{imageCaption}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -320,7 +346,7 @@ const ProjectDetail = () => {
             
             <div className="text-center mt-12">
               <Link
-                to="/#portfolio"
+                to="/projects"
                 className="inline-flex items-center px-6 py-3 bg-tech-400 text-white rounded-full hover:bg-tech-500 transition-colors font-medium"
               >
                 View All Projects
@@ -367,4 +393,3 @@ const ProjectDetail = () => {
 };
 
 export default ProjectDetail;
-

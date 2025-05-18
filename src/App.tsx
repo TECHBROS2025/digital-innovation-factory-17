@@ -30,6 +30,7 @@ import ForexServices from './pages/services/ForexServices';
 import CryptoServices from './pages/services/CryptoServices';
 import ServiceDetail from './components/ServiceDetail';
 import SubCategoryDetail from './components/SubCategoryDetail';
+import ProjectDetail from './components/ProjectDetail';
 import AuthPage from './pages/AuthPage';
 import { Toaster } from '@/components/ui/sonner';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -51,6 +52,7 @@ function App() {
                 <Route path="/" element={<Index />} />
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/projects/:slug" element={<ProjectDetail />} />
                 <Route path="/team" element={<Team />} />
                 <Route path="/legal" element={<LegalPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
