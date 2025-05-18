@@ -13,6 +13,10 @@ const AIDataServices = () => {
   
   // Filter services by AI & Data category
   const services = serviceDetails.filter(service => service.category === "AI & Data");
+  
+  // Use the actual slug from the first AI & Data service
+  const mainServiceSlug = services.length > 0 ? services[0].slug : 'artificial-intelligence';
+  
   // Get all subcategories
   const allSubcategories = services.flatMap(service => service.subcategories || []);
   
@@ -73,9 +77,9 @@ const AIDataServices = () => {
           </div>
         </section>
         
-        {/* Subcategories Section - Using updated SubCategoryList component */}
+        {/* Subcategories Section - Using mainServiceSlug to ensure proper linking */}
         {allSubcategories.length > 0 && (
-          <SubCategoryList serviceSlug={services[0]?.slug || ''} subcategories={allSubcategories} />
+          <SubCategoryList serviceSlug={mainServiceSlug} subcategories={allSubcategories} />
         )}
       </main>
       

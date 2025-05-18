@@ -13,6 +13,10 @@ const ConsultingServices = () => {
   
   // Filter services by Consulting category
   const services = serviceDetails.filter(service => service.category === "Consulting");
+  
+  // Use the actual slug from the first Consulting service
+  const mainServiceSlug = services.length > 0 ? services[0].slug : 'business-consulting';
+  
   // Get all subcategories
   const allSubcategories = services.flatMap(service => service.subcategories || []);
   
@@ -73,9 +77,9 @@ const ConsultingServices = () => {
           </div>
         </section>
         
-        {/* Subcategories Section - Using updated SubCategoryList component */}
+        {/* Subcategories Section - Using mainServiceSlug to ensure proper linking */}
         {allSubcategories.length > 0 && (
-          <SubCategoryList serviceSlug={services[0]?.slug || ''} subcategories={allSubcategories} />
+          <SubCategoryList serviceSlug={mainServiceSlug} subcategories={allSubcategories} />
         )}
       </main>
       

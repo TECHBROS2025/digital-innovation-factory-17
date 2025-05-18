@@ -13,7 +13,11 @@ const DevelopmentServices = () => {
   
   // Filter services by Development category
   const services = serviceDetails.filter(service => service.category === "Development");
-  // Get all subcategories
+  
+  // Use the actual slug from the first Development service
+  const mainServiceSlug = services.length > 0 ? services[0].slug : 'web-development';
+  
+  // Get all subcategories from all development services
   const allSubcategories = services.flatMap(service => service.subcategories || []);
   
   useEffect(() => {
@@ -73,9 +77,9 @@ const DevelopmentServices = () => {
           </div>
         </section>
         
-        {/* Subcategories Section - Now using SubCategoryList component */}
+        {/* Subcategories Section - Using mainServiceSlug to ensure proper linking */}
         {allSubcategories.length > 0 && (
-          <SubCategoryList serviceSlug={services[0]?.slug || ''} subcategories={allSubcategories} />
+          <SubCategoryList serviceSlug={mainServiceSlug} subcategories={allSubcategories} />
         )}
       </main>
       
