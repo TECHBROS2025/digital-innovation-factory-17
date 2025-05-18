@@ -558,7 +558,7 @@ export const projects = [
       'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3',
       'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2673&auto=format&fit=crop&ixlib=rb-4.0.3',
     ],
-    challenge: 'Developing a language learning application that adapts to each user's learning style, pace, and goals while providing accurate feedback on pronunciation and grammar.',
+    challenge: 'Developing a language learning application that adapts to each user\'s learning style, pace, and goals while providing accurate feedback on pronunciation and grammar.',
     solution: 'We built an AI-powered app with speech recognition, adaptive learning paths, personalized exercises, and conversational practice with virtual tutors.',
     results: '5 million+ active users, 85% improvement in language proficiency after 3 months, and 4.8-star average app store rating.',
     description: [

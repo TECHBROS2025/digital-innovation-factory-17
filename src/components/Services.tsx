@@ -49,18 +49,18 @@ const Services = () => {
 
   // Map category names to URL paths
   const categoryUrls: Record<string, string> = {
-    "Development": "development",
-    "Design": "design",
-    "Marketing": "marketing",
-    "Infrastructure": "infrastructure",
-    "Education": "education",
-    "Healthcare": "healthcare",
-    "E-commerce": "ecommerce",
-    "AI & Data": "ai-data",
-    "Security": "security",
-    "Consulting": "consulting",
-    "Forex Trading": "forex",
-    "Cryptocurrency": "crypto"
+    "Development": "services/development",
+    "Design": "services/design",
+    "Marketing": "services/marketing",
+    "Infrastructure": "services/infrastructure",
+    "Education": "services/education",
+    "Healthcare": "services/healthcare",
+    "E-commerce": "services/ecommerce",
+    "AI & Data": "services/ai-data",
+    "Security": "services/security",
+    "Consulting": "services/consulting",
+    "Forex Trading": "services/forex",
+    "Cryptocurrency": "services/crypto"
   };
 
   // Map categories to icons
