@@ -16,8 +16,11 @@ const ProjectDetail = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
   
   const project = projects.find(p => p.slug === slug);
-  const nextProject = project?.nextProject ? projects.find(p => p.slug === project.nextProject) : null;
-  const prevProject = project?.prevProject ? projects.find(p => p.slug === project.prevProject) : null;
+  
+  // Find the next and previous projects
+  const currentIndex = project ? projects.findIndex(p => p.slug === project.slug) : -1;
+  const nextProject = currentIndex < projects.length - 1 && currentIndex !== -1 ? projects[currentIndex + 1] : null;
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   
   useEffect(() => {
     if (!project) {
@@ -31,6 +34,12 @@ const ProjectDetail = () => {
   }, [project, navigate, slug]);
   
   if (!project) return null;
+
+  // Extract year from the completionDate
+  const projectYear = new Date(project.completionDate).getFullYear().toString();
+  
+  // Use client or category as role if needed
+  const projectRole = project.category;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -114,11 +123,15 @@ const ProjectDetail = () => {
                 <div className="prose prose-lg max-w-none">
                   {activeTab === 'overview' && (
                     <div>
-                      {project.description.map((paragraph, index) => (
-                        <p key={index} className="mb-4 text-gray-700">
-                          {paragraph}
-                        </p>
-                      ))}
+                      {Array.isArray(project.description) ? (
+                        project.description.map((paragraph, index) => (
+                          <p key={index} className="mb-4 text-gray-700">
+                            {paragraph}
+                          </p>
+                        ))
+                      ) : (
+                        <p className="mb-4 text-gray-700">{project.description}</p>
+                      )}
                     </div>
                   )}
                   
@@ -140,12 +153,12 @@ const ProjectDetail = () => {
                     <div>
                       <h3 className="text-2xl font-bold mb-4">The Results</h3>
                       <ul className="space-y-3">
-                        {project.results.map((result, index) => (
+                        {project.results.split(',').map((result, index) => (
                           <li key={index} className="flex items-start">
                             <div className="bg-tech-100 rounded-full p-1 mr-3 mt-1">
                               <ChevronRight size={14} className="text-tech-600" />
                             </div>
-                            <span>{result}</span>
+                            <span>{result.trim()}</span>
                           </li>
                         ))}
                       </ul>
@@ -171,7 +184,7 @@ const ProjectDetail = () => {
                       <Calendar className="w-5 h-5 text-tech-400 mt-1 mr-3" />
                       <div>
                         <p className="font-medium">Year</p>
-                        <p className="text-gray-600">{project.year}</p>
+                        <p className="text-gray-600">{projectYear}</p>
                       </div>
                     </div>
                     
@@ -179,7 +192,7 @@ const ProjectDetail = () => {
                       <Briefcase className="w-5 h-5 text-tech-400 mt-1 mr-3" />
                       <div>
                         <p className="font-medium">Our Role</p>
-                        <p className="text-gray-600">{project.role}</p>
+                        <p className="text-gray-600">{projectRole}</p>
                       </div>
                     </div>
                     
@@ -209,16 +222,10 @@ const ProjectDetail = () => {
                     </svg>
                     
                     <div className="pl-8 pt-8">
-                      <p className="text-gray-700 italic mb-4">{project.testimonial.quote}</p>
+                      <p className="text-gray-700 italic mb-4">{project.testimonial.content}</p>
                       
                       <div className="flex items-center">
-                        {project.testimonial.avatar && (
-                          <img 
-                            src={project.testimonial.avatar} 
-                            alt={project.testimonial.author}
-                            className="w-10 h-10 rounded-full object-cover mr-4"
-                          />
-                        )}
+                        {/* No avatar needed since it doesn't exist in our data structure */}
                         <div>
                           <p className="font-medium">{project.testimonial.author}</p>
                           <p className="text-sm text-gray-600">{project.testimonial.position}</p>
@@ -238,14 +245,14 @@ const ProjectDetail = () => {
             <h2 className="text-3xl font-bold mb-10">Project Gallery</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {project.images.map((image, index) => (
+              {Array.isArray(project.images) && project.images.map((image, index) => (
                 <div key={index} className="overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
                   <img 
-                    src={image.url} 
-                    alt={image.caption || `Project image ${index + 1}`}
+                    src={typeof image === 'string' ? image : image.url}
+                    alt={`Project image ${index + 1}`}
                     className="w-full h-auto transition-transform duration-500 hover:scale-105"
                   />
-                  {image.caption && (
+                  {typeof image !== 'string' && image.caption && (
                     <div className="p-4 bg-white">
                       <p className="text-gray-700">{image.caption}</p>
                     </div>
@@ -360,3 +367,4 @@ const ProjectDetail = () => {
 };
 
 export default ProjectDetail;
+

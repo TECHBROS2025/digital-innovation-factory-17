@@ -1,4 +1,3 @@
-
 export const projects = [
   {
     id: '1',
@@ -30,7 +29,8 @@ export const projects = [
       author: "Sarah Johnson",
       position: "CEO, FashionRetail Inc."
     },
-    url: "https://fashionretail.example.com"
+    url: "https://fashionretail.example.com",
+    role: "Full-stack Development"
   },
   {
     id: '2',
